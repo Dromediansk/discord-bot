@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const URL = "https://api.weatherapi.com/v1/forecast.json";
-const FORECAST_DAYS = 3;
+const FORECAST_DAYS = 10;
 
 async function fetchForecast(location) {
   return await axios({
@@ -28,6 +28,11 @@ async function fetchForecast(location) {
             temperatureMaxC: forecastDay.day.maxtemp_c,
             temperatureMinF: forecastDay.day.mintemp_f,
             temperatureMaxF: forecastDay.day.maxtemp_f,
+
+            sunriseTime: forecastDay.astro.sunrise,
+            sunsetTime: forecastDay.astro.sunset,
+            moonriseTime: forecastDay.astro.moonrise,
+            moonsetTime: forecastDay.astro.moonset,
           };
         }
       );
